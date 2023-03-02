@@ -21,25 +21,33 @@ export const Auth = () => {
 	const handleLogin = async () => {
 
 		try {
-			const response = await axios.post('http://localhost:3001/api/login', {
+			const response = await axios.post('http://localhost:3001/auth/login', {
 				email: email,
 				password: password,
 			});
 
-			const token = response.data.token;
+			const TOKEN = response.data
 
-			if (signIn({
-				token: token,
-				tokenType: 'Bearer',
-				authState: response.data.user,
-				expiresIn: 120
-			  })) {
-				
-				console.log(isAuthenticated())
-
-			  } else {
-				alert("Error Occoured. Try Again")
-			  }
+			const userInfo = await axios.get('http://localhost:3001/auth/userinfo', {
+				headers: {
+					'Authorization': `Bearer ${TOKEN}`
+				}
+			})
+			.then(response => {
+				if (signIn({
+					token: TOKEN,
+					tokenType: 'Bearer',
+					authState: response.data,
+					expiresIn: 120
+				})) {
+	
+					console.log(isAuthenticated())
+	
+				} else {alert("Error Occoured. Try Again") }
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
 		} catch (error) {
 			console.error(error);
 		}
