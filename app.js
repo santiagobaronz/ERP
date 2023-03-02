@@ -29,7 +29,14 @@ connection.connect(err => {
 app.post('/api/login', async (req, res) => {
 
 	const { email, password } = req.body;
-	const query = `SELECT * FROM usuarios WHERE correo_electronico = ? AND contrasena = ?`;
+
+	// Consulta a ambas tablas para encontrar una coincidencia
+	const query = `
+	SELECT *
+	FROM usuarios u
+	INNER JOIN empleados e ON u.ID_EMPLEADO = e.ID_EMPLEADO
+	WHERE u.CORREO_ELECTRONICO = ? AND e.CLAVE = ?
+`;
 
 	connection.query(query, [email, password], (err, results) => {
 		if (err) {
@@ -39,8 +46,9 @@ app.post('/api/login', async (req, res) => {
 			res.status(401).send('Invalid username or password');
 		} else {
 			const user = results[0];
+			console.log(user)
 			const token = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET);
-			res.json({ token });
+			res.json({ token, user });
 		}
 	});
 });

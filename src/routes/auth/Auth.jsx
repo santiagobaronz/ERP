@@ -31,18 +31,15 @@ export const Auth = () => {
 			if (signIn({
 				token: token,
 				tokenType: 'Bearer',
-				authState: {name: 'React User', uid: 123456},
+				authState: response.data.user,
 				expiresIn: 120
 			  })) {
 				
 				console.log(isAuthenticated())
+
 			  } else {
-				// Else, there must be some error. So, throw an error
 				alert("Error Occoured. Try Again")
 			  }
-			
-			
-
 		} catch (error) {
 			console.error(error);
 		}
@@ -51,6 +48,8 @@ export const Auth = () => {
 	return (
 		<div>
 			<h1>Iniciar Sesión</h1>
+
+			<img src="/assets/Completo2.png" alt="" />
 			<form>
 				<label>
 					Correo Electrónico:

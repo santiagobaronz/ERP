@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { ErrorPage } from './ErrorPage';
 
 import './index.css'
@@ -8,20 +8,24 @@ import './index.css'
 import { Root } from './Root';
 import { Auth } from './routes/auth/Auth';
 
-import { AuthProvider, RequireAuth } from 'react-auth-kit';
+import { AuthProvider, RequireAuth, useIsAuthenticated } from 'react-auth-kit';
 import { Dashboard } from './routes/home/Dashboard';
+
+const PrivateRoute = ({ Component }) => {
+	const isAuthenticated = useIsAuthenticated();
+	const auth = isAuthenticated();
+	return auth ? <Component /> : <Navigate to="/ingreso" />;
+};
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Root />,
+		element: <PrivateRoute Component={Root} />,
 		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: '/dashboard',
-				element: <RequireAuth loginPath='/ingreso'>
-					<Dashboard/>
-				</RequireAuth>
+				element:<PrivateRoute Component={Dashboard} />
 			},
 		]
 	},
