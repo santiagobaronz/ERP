@@ -1,14 +1,17 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useIsAuthenticated, useSignIn } from 'react-auth-kit'
-
+import { Navigate } from 'react-router-dom';
+import { useSettings } from '../../components/SettingsProvider';
 
 export const Auth = () => {
 
-	const isAuthenticated = useIsAuthenticated()
+	const settings = useSettings();
+
 	const signIn = useSignIn()
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [isAuthenticated, setisAuthenticated] = useState(useIsAuthenticated())
 
 	const handleEmailChange = (event) => {
 		setEmail(event.target.value);
@@ -21,29 +24,25 @@ export const Auth = () => {
 	const handleLogin = async () => {
 
 		try {
-			const response = await axios.post('http://localhost:3001/auth/login', {
+			const response = await axios.post(`${settings.URL_EMPRESA}/auth/login`, {
 				email: email,
 				password: password,
 			});
 
 			const TOKEN = response.data
 
-			const userInfo = await axios.get('http://localhost:3001/auth/userinfo', {
+			await axios.get(`${settings.URL_EMPRESA}/auth/userinfo`, {
 				headers: {
 					'Authorization': `Bearer ${TOKEN}`
 				}
 			})
 			.then(response => {
-				if (signIn({
-					token: TOKEN,
-					tokenType: 'Bearer',
-					authState: response.data,
-					expiresIn: 120
-				})) {
-	
-					console.log(isAuthenticated())
-	
-				} else {alert("Error Occoured. Try Again") }
+				if (signIn({ token: TOKEN, tokenType: 'Bearer',
+					authState: response.data, expiresIn: 1440})){
+						setisAuthenticated(true)
+				} else {
+					alert("Ha ocurrido un error, intentelo de nuevo") 
+				}
 			})
 			.catch(error => {
 				console.error('Error:', error);
@@ -51,6 +50,10 @@ export const Auth = () => {
 		} catch (error) {
 			console.error(error);
 		}
+	}
+
+	if (isAuthenticated) {
+		return <Navigate to={'/'} />
 	}
 
 	return (
@@ -73,6 +76,4 @@ export const Auth = () => {
 			</form>
 		</div>
 	);
-
-
 }

@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import { createConnection } from 'mysql2';
 import cors from 'cors';
 import authRoute from './app/routes/authRoute.js'
+import settingsRoute from './app/routes/settingsRoute.js'
 
 const app = express();
 const router = express.Router();
@@ -39,6 +40,7 @@ connection.connect(err => {
 ***************************************************************/
 
 app.use('/auth', authRoute )
+app.use('/settings', settingsRoute )
 
 /***************************************************************
  *                          Server 
