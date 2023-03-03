@@ -4,11 +4,14 @@ module.exports = {
 	  "./index.html",
 	  "./src/**/*.{js,ts,jsx,tsx}",
 	],
+	darkMode: 'class',
 	theme: {
 	  extend: {},
 	  colors: {
+		'bg-white': '#eaeaec',
 		'white': '#ffffff',
-		'black': '#000000',
+		'text-black': '#000000',
+		'bg-black': '#242424',
 		'green': {
 			'50': '#f1fcf8',
 			'100': '#d1f6eb',

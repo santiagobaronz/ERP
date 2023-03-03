@@ -37,7 +37,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<SettingsProvider>
-			<AuthProvider authType={'cookie'}
+			<AuthProvider
+				authType={'cookie'}
 				authName={'_auth'}
 				cookieDomain={window.location.hostname}
 				cookieSecure={window.location.protocol === "https:"}>

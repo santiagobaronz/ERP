@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useIsAuthenticated, useSignIn } from 'react-auth-kit'
 import { Navigate } from 'react-router-dom';
 import { useSettings } from '../../components/SettingsProvider';
+import SwitchWebColor from '../../components/SwitchWebColor';
 
 export const Auth = () => {
 
@@ -29,24 +30,26 @@ export const Auth = () => {
 				password: password,
 			});
 
-			const TOKEN = response.data
+			const TOKEN = response.data;
 
 			await axios.get(`${settings.URL_EMPRESA}/auth/userinfo`, {
 				headers: {
 					'Authorization': `Bearer ${TOKEN}`
 				}
 			})
-			.then(response => {
-				if (signIn({ token: TOKEN, tokenType: 'Bearer',
-					authState: response.data, expiresIn: 1440})){
-						setisAuthenticated(true)
-				} else {
-					alert("Ha ocurrido un error, intentelo de nuevo") 
-				}
-			})
-			.catch(error => {
-				console.error('Error:', error);
-			});
+				.then(response => {
+					if (signIn({
+						token: TOKEN, tokenType: 'Bearer',
+						authState: response.data, expiresIn: 1440
+					})) {
+						setisAuthenticated(true);
+					} else {
+						alert("Ha ocurrido un error, intentelo de nuevo");
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
 		} catch (error) {
 			console.error(error);
 		}
@@ -59,6 +62,8 @@ export const Auth = () => {
 	return (
 		<div>
 			<h1>Iniciar Sesión</h1>
+
+			<SwitchWebColor/>
 
 			<img src="/assets/Completo2.png" alt="" />
 			<form>
