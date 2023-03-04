@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useIsAuthenticated, useSignIn } from 'react-auth-kit'
 import { Link, Navigate } from 'react-router-dom';
-import { useColorMode } from '../../components/ColorProvider';
 import { useSettings } from '../../components/SettingsProvider';
 
 export const Auth = () => {

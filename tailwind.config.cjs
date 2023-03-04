@@ -6,9 +6,6 @@ module.exports = {
 	],
 	darkMode: 'class',
 	theme: {
-		fontFamily: {
-			'poppins': ['system-ui']
-		},
 		screens: {
 			sm: '550px',
 			md: '750px',
@@ -24,6 +21,7 @@ module.exports = {
 			'black': '#000000',
 			'bg-black': '#242424',
 			'switchColor': '#313234',
+			'gray': '#bababa',
 			'green': {
 				'50': '#f1fcf8',
 				'100': '#d1f6eb',

@@ -1,9 +1,14 @@
 import { Outlet } from "react-router-dom";
+import { Sidebar } from "./routes/templates/Sidebar";
 
 export const Root = () => {
 	return (
 		<>
-			  <div id="content"><Outlet/></div>
+			<Sidebar/>
+			
+			<div id="content">
+				<Outlet/>
+			</div>
 		</>
 	  );
 }

@@ -5,3 +5,7 @@
 .border-form{
 	border: 1px solid #cccccc;
 }
+
+.border-bottom-divisor{
+	border-bottom: 1px solid #ababab52;
+}
