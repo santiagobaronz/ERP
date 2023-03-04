@@ -12,6 +12,7 @@ module.exports = {
 		'white': '#ffffff',
 		'text-black': '#000000',
 		'bg-black': '#242424',
+		'switchColor': '#313234',
 		'green': {
 			'50': '#f1fcf8',
 			'100': '#d1f6eb',
