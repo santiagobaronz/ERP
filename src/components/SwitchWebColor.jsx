@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Switch } from '@headlessui/react';
 
 function SwitchWebColor() {
-	const [modoOscuro, setModoOscuro] = useState(true);
+	const [modoOscuro, setModoOscuro] = useState(false);
 
 	useEffect(() => {
 		document.documentElement.classList.toggle('dark', modoOscuro);
