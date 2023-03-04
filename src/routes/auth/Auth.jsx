@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useIsAuthenticated, useSignIn } from 'react-auth-kit'
 import { Link, Navigate } from 'react-router-dom';
+import { useColorMode } from '../../components/ColorProvider';
 import { useSettings } from '../../components/SettingsProvider';
 
 export const Auth = () => {
@@ -84,7 +85,8 @@ export const Auth = () => {
 								type="email"
 								value={email}
 								onChange={handleEmailChange}
-								placeholder='Ingresa aquí tu correo electrónico' />
+								placeholder='Ingresa aquí tu correo electrónico'
+								autoComplete='username' />
 						</label>
 						<br />
 						<label>
@@ -93,7 +95,8 @@ export const Auth = () => {
 								type="password"
 								value={password}
 								onChange={handlePasswordChange}
-								placeholder='Ingresa aquí tu contraseña' />
+								placeholder='Ingresa aquí tu contraseña'
+								autoComplete="current-password" />
 						</label>
 						<br />
 						<button className='w-full bg-green-600 h-14 rounded-md text-white font-medium mb-5' type="button" onClick={handleLogin}>Iniciar Sesión</button>

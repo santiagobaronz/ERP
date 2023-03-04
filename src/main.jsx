@@ -11,6 +11,7 @@ import { Auth } from './routes/auth/Auth';
 import { AuthProvider, useIsAuthenticated } from 'react-auth-kit';
 import { Dashboard } from './routes/home/Dashboard';
 import { SettingsProvider } from './components/SettingsProvider';
+import { ColorProvider } from './components/ColorProvider';
 
 const PrivateRoute = ({ Component }) => {
 	const isAuthenticated = useIsAuthenticated();
@@ -37,13 +38,15 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<SettingsProvider>
-			<AuthProvider
-				authType={'cookie'}
-				authName={'_auth'}
-				cookieDomain={window.location.hostname}
-				cookieSecure={window.location.protocol === "https:"}>
-				<RouterProvider router={router} />
-			</AuthProvider>
+			<ColorProvider>
+				<AuthProvider
+					authType={'cookie'}
+					authName={'_auth'}
+					cookieDomain={window.location.hostname}
+					cookieSecure={window.location.protocol === "https:"}>
+					<RouterProvider router={router} />
+				</AuthProvider>
+			</ColorProvider>
 		</SettingsProvider>
 	</React.StrictMode>,
 )
