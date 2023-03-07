@@ -4,7 +4,7 @@ import axios from 'axios';
 const SettingsContext = createContext({});
 
 const SettingsProvider = ({ children }) => {
-	const [settings, setSettings] = useState([]);
+	const [settings, setSettings] = useState(null);
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -19,11 +19,13 @@ const SettingsProvider = ({ children }) => {
     fetchSettings();
   }, []);
 
-  return (
-    <SettingsContext.Provider value={settings}>
-      {children}
-    </SettingsContext.Provider>
-  );
+  if(settings != null){
+	return (
+		<SettingsContext.Provider value={settings}>
+		  {children}
+		</SettingsContext.Provider>
+	  );
+  }
 };
 
 const useSettings = () => useContext(SettingsContext);

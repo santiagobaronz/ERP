@@ -44,10 +44,11 @@ router.post('/login', async (req, res) => {
 router.get('/userinfo', authenticateToken, (req, res) => {
 	const userId = req.userId;
 	const query = `
-	  SELECT *
-	  FROM usuarios u
-	  INNER JOIN empleados e ON u.ID_EMPLEADO = e.ID_EMPLEADO
-	  WHERE u.ID_USUARIO = ?
+	SELECT *
+	FROM usuarios u
+	INNER JOIN empleados e ON u.ID_EMPLEADO = e.ID_EMPLEADO
+	INNER JOIN cargos c ON e.ID_CARGO = c.ID_CARGO
+	WHERE u.ID_USUARIO = ?
 	`;
 	connection.query(query, [userId], (err, results) => {
 	  if (err) {

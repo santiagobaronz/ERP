@@ -23,6 +23,7 @@ export const Auth = () => {
 
 	const handleLogin = async () => {
 
+
 		try {
 			const response = await axios.post(`${settings.URL_EMPRESA}/auth/login`, {
 				email: email,

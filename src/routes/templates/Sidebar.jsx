@@ -1,25 +1,27 @@
 import React from 'react'
-import { useAuthUser } from 'react-auth-kit';
+import { useAuthUser, useSignOut } from 'react-auth-kit';
 import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../../components/SettingsProvider';
 
 import { RxDashboard, RxChatBubble } from "react-icons/rx";
 import { IoIosStats, IoMdNotifications, IoMdCalendar } from "react-icons/io";
+import { updateUser } from '../../hooks/UpdateUser';
 
 export const Sidebar = () => {
 
 	const auth = useAuthUser();
+	const signOut = useSignOut();
+	
 	const settings = useSettings();
 	const location = useLocation();
 
 	return (
-		<div className='flex flex-col w-72 min-h-screen bg-bg-black p-6'>
-
+		<div className='flex flex-col w-64 min-h-screen bg-bg-black p-6'>
 			<div className='flex gap-x-4 items-center border-bottom-divisor pb-5'>
 				<img src="/assets/logo-icon-white.png" alt="Logo de la empresa" className='w-14 p-3 bg-black rounded-xl' />
 				<div>
 					<p className='text-white font-medium'>{settings.NOMBRE_EMPRESA}</p>
-					<p className='capitalize text-gray'>{auth().NOMBRES.toLowerCase()}</p>
+					<p className='capitalize text-gray text-sm'>{auth().NOMBRES.toLowerCase()}</p>
 				</div>
 			</div>
 			<div className='mt-5'>
@@ -71,6 +73,12 @@ export const Sidebar = () => {
 						${location.pathname === '/dashboard' ? 'text-white bg-switchColor' : 'text-gray'}`}>
 							<RxDashboard className='text-lg' />
 							<p className='ml-4'>Settings</p>
+						</Link>
+					</li>
+					<li className='mb-2'>
+						<Link className='flex items-center h-12 p-3 font-medium rounded-md hover:bg-switchColor hover:text-white'>
+							<RxDashboard className='text-lg' />
+							<p className='ml-4' onClick={() => signOut()}>Cerrar Sesión</p>
 						</Link>
 					</li>
 				</ul>

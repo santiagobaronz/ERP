@@ -23,7 +23,6 @@ router.get('/main', async (req, res) => {
 			res.status(401).send('Invalid username or password');
 		} else {
 			const settings = results[0];
-			console.log(settings)
 			res.json(settings);
 		}
 	});

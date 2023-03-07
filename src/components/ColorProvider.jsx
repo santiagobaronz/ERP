@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { SettingsProvider } from './SettingsProvider';
 
 const ColorContext = createContext({});
 
