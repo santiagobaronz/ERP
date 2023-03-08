@@ -16,24 +16,27 @@ module.exports = {
 			center: true,
 		},
 		colors: {
-			'bg-white': '#eaeaec',
+
+			// Primary background color
+
+			'bg-dark-primary': '#1f2125',
+			'bg-white-primary': '#eaeaec',
+
+			// Secondary background color
+			'bg-dark-secondary': '#161819',
+			'bg-white-secondary': '#f5f7f9',
+			'bg-green-secondary': '#1c8573',
+
+			// Text color
+
 			'white': '#ffffff',
 			'black': '#000000',
-			'bg-black': '#242424',
-			'switchColor': '#313234',
-			'gray': '#bababa',
-			'green': {
-				'50': '#f1fcf8',
-				'100': '#d1f6eb',
-				'200': '#a3ecd8',
-				'300': '#6ddbbf',
-				'400': '#44c3a8',
-				'500': '#26a68d',
-				'600': '#1c8573',
-				'700': '#1a6b5d',
-				'800': '#1a554d',
-				'900': '#1a4740',
-			},
+			'gray-dark': '#bababa',
+			'gray-white': '#868893',
+			
+			'bg-dark-hover': '#313234',
+			'bg-white-hover': '#d9d9d9'
+			
 		}
 	},
 	plugins: [],

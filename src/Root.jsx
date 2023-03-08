@@ -21,9 +21,10 @@ export const Root = () => {
 	return (
 		<>
 			<Sidebar/>
-			
-			<div id="content">
-				<Outlet/>
+			<div id="content" className="w-full bg-bg-white-secondary dark:bg-bg-dark-secondary">
+				<div className="rounded-tl-[30px] w-full h-full bg-bg-white-primary dark:bg-bg-dark-primary p-16">
+					<Outlet/>
+				</div>
 			</div>
 		</>
 	  );

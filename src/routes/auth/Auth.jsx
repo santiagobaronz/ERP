@@ -61,8 +61,8 @@ export const Auth = () => {
 
 	return (
 		<div className='w-full min-h-screen flex justify-center items-center container p-10'>
-			<div className='w-full flex flex-wrap'>
-				<div className="lg:w-1/2 lg:h-auto w-full h-52 relative bg-white lg:rounded-l-2xl max-lg:rounded-xl lg:order-1 order-2 max-lg:mt-5">
+			<div className='w-full flex flex-wrap bg-bg-white-secondary rounded-2xl shadow-xl'>
+				<div className="lg:w-1/2 lg:h-auto w-full h-52 relative lg:rounded-l-2xl max-lg:rounded-xl lg:order-1 order-2 max-lg:mt-5">
 					<div className="absolute inset-0 rounded-2xl m-4"
 						style={{
 							backgroundImage: "url('/assets/bg-login.png')",
@@ -74,7 +74,7 @@ export const Auth = () => {
 						<img src="/assets/poweredby-white.png" className='w-2/5 max-md:w-3/5' id='imgLogo' />
 					</div>
 				</div>
-				<div className='lg:w-1/2 p-20 max-sm:p-14 bg-white rounded-r-2xl max-lg:rounded-xl lg:order-2 order-1'>
+				<div className='lg:w-1/2 p-20 max-sm:p-14 rounded-r-2xl max-lg:rounded-xl lg:order-2 order-1'>
 					<img src="/assets/logo-empresa.png" alt="Logo empresa" className='w-1/2 mb-10' />
 					<h1 className='text-2xl font-semibold mb-3'>Iniciar sesión</h1>
 					<p className='mb-8 text-bg-black'>A continuación ingresa los datos requeridos para acceder con tu perfil al sistema de gestión.</p>
@@ -99,7 +99,7 @@ export const Auth = () => {
 								autoComplete="current-password" />
 						</label>
 						<br />
-						<button className='w-full bg-green-600 h-14 rounded-md text-white font-medium mb-5' type="button" onClick={handleLogin}>Iniciar Sesión</button>
+						<button className='w-full bg-bg-green-secondary h-14 rounded-md text-white font-medium mb-5' type="button" onClick={handleLogin}>Iniciar Sesión</button>
 						<Link to={'/'} className='text-switchColor'><p className='mb-2 font-medium'>¿Olvidaste tu contraseña?</p></Link>
 						<Link to={'/'} className='text-switchColor'><p>¿Problemas para ingresar a tu cuenta?</p></Link>
 					</form>
