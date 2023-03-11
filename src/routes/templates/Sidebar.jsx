@@ -3,18 +3,15 @@ import { useAuthUser, useSignOut } from 'react-auth-kit';
 import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../../components/SettingsProvider';
 
-import { RxDashboard,
-	RxExit,
-	RxQuestionMarkCircled,
-	RxPerson,
-	RxLayers,
-	RxMixerHorizontal,
-	RxBackpack,
-	RxGear
-	} from "react-icons/rx";
-import { IoIosStats,  IoIosColorPalette } from "react-icons/io";
-import { BsCashCoin, BsCurrencyDollar, BsFillBasket3Fill, BsFillBoxSeamFill, BsFillPersonLinesFill, BsFillPersonVcardFill, BsListUl, BsPeople, BsPeopleFill, BsViewList } from "react-icons/bs";
+import { RxExit, RxQuestionMarkCircled, RxPerson,
+	RxLayers, RxMixerHorizontal, RxGear } from "react-icons/rx";
 
+import { IoIosStats,  IoIosColorPalette } from "react-icons/io";
+
+import { BsCashCoin, BsCurrencyDollar,
+	BsFillBasket3Fill, BsFillBoxSeamFill,
+	BsFillPersonLinesFill, BsFillPersonVcardFill,
+	BsListUl, BsPeopleFill, BsViewList } from "react-icons/bs";
 
 import { useColorMode } from '../../components/ColorProvider';
 
