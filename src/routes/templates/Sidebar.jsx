@@ -41,7 +41,7 @@ export const Sidebar = () => {
 			<div className='flex flex-col justify-between flex-grow mt-5'>
 				<ul>
 					<div>
-						<h2 className='text-gray-dark text-sm font-medium mb-2 select-none'>Información personal</h2>
+						<h2 className='text-gray-dark text-sm font-medium mb-3 select-none'>Información personal</h2>
 
 						<li className='mb-1'>
 							<Link className={`flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover hover:text-white
@@ -74,7 +74,7 @@ export const Sidebar = () => {
 					</div>
 
 					<div className='border-top-divisor pt-6 mt-6'>
-						<h2 className='text-gray-white dark:text-gray-dark text-sm font-medium mb-2 select-none'>Gestión de información</h2>
+						<h2 className='text-gray-white dark:text-gray-dark text-sm font-medium mb-3 select-none'>Gestión de información</h2>
 
 						<li className='mb-1'>
 						<Link className={`flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover hover:text-white
@@ -121,7 +121,7 @@ export const Sidebar = () => {
 					</div>
 
 					<div className='border-top-divisor pt-6 mt-6'>
-						<h2 className='text-gray-white dark:text-gray-dark text-sm font-medium mb-2 select-none'>Control de proveedores</h2>
+						<h2 className='text-gray-white dark:text-gray-dark text-sm font-medium mb-3 select-none'>Control de proveedores</h2>
 
 						<li className='mb-1'>
 						<Link className={`flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover hover:text-white
@@ -140,7 +140,7 @@ export const Sidebar = () => {
 					</div>
 
 					<div className='border-top-divisor pt-6 mt-6'>
-						<h2 className='text-gray-white dark:text-gray-dark text-sm font-medium mb-2 select-none'>Gestión administrativa</h2>
+						<h2 className='text-gray-white dark:text-gray-dark text-sm font-medium mb-3 select-none'>Gestión administrativa</h2>
 
 						<li className='mb-1'>
 						<Link className={`flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover hover:text-white
@@ -166,27 +166,30 @@ export const Sidebar = () => {
 					</div>
 				</ul>
 
-				<ul className='mt-20'>
+				<div className='w-full h-48 bg-bg-dark-hover rounded-xl mt-10'>
+
+				</div>
+
+				<ul className='mt-10'>
 					<li className='mb-1' onClick={handleToggleColor}>
-						<Link className='flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover  hover:text-white   text-gray-white'>
+						<Link className='flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover  hover:text-white   text-gray-dark'>
 							<IoIosColorPalette className='text-base' />
 							<p className='ml-4 text-sm'>Modo {darkMode ? 'claro' : 'oscuro'}</p>
 						</Link>
 					</li>
 					<li className='mb-1'>
-						<Link className='flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover  hover:text-white   text-gray-white'>
+						<Link className='flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover  hover:text-white   text-gray-dark'>
 							<RxQuestionMarkCircled className='text-base' />
 							<p className='ml-4 text-sm'>Centro de ayuda</p>
 						</Link>
 					</li>
 					<li className='mb-1' onClick={() => signOut()}>
-						<Link className='flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover  hover:text-white   text-gray-white'>
+						<Link className='flex items-center h-10 p-3 font-medium rounded-md hover:bg-bg-dark-hover  hover:text-white   text-gray-dark'>
 							<RxExit className='text-base' />
 							<p className='ml-4 text-sm'>Cerrar sesión</p>
 						</Link>
 					</li>
 				</ul>
-				
 			</div>
 		</div>
 	)
